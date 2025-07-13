@@ -1,5 +1,7 @@
--- Final table for products
-CREATE TABLE IF NOT EXISTS demo_tables.products
+-- Drop and recreate final table for products
+DROP TABLE IF EXISTS demo_tables.products;
+
+CREATE TABLE demo_tables.products
 (
     id Int32,
     name String,
@@ -13,8 +15,10 @@ CREATE TABLE IF NOT EXISTS demo_tables.products
 ENGINE = MergeTree()
 ORDER BY id;
 
--- Final table for orders
-CREATE TABLE IF NOT EXISTS demo_tables.orders
+-- Drop and recreate final table for orders
+DROP TABLE IF EXISTS demo_tables.orders;
+
+CREATE TABLE demo_tables.orders
 (
     id Int32,
     customer_name String,
@@ -27,8 +31,10 @@ CREATE TABLE IF NOT EXISTS demo_tables.orders
 ENGINE = MergeTree()
 ORDER BY id;
 
--- Final table for order_items
-CREATE TABLE IF NOT EXISTS demo_tables.order_items
+-- Drop and recreate final table for order_items
+DROP TABLE IF EXISTS demo_tables.order_items;
+
+CREATE TABLE demo_tables.order_items
 (
     id Int32,
     order_id Int32,
