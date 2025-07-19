@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS demo_tables;
+DROP TABLE demo_tables.daily_sales_stats;
 
 CREATE TABLE IF NOT EXISTS demo_tables.daily_sales_stats
 (

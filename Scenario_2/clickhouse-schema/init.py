@@ -45,7 +45,7 @@ for sql_file in sql_files:
 
 expected_tables = ['demo_tables.daily_sales_stats']
 
-print("\n📦 Verifying table existence...")
+print("\n Verifying table existence...")
 for tbl in expected_tables:
     try:
         client.query(f"DESCRIBE TABLE {tbl}")
