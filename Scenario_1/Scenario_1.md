@@ -1,8 +1,14 @@
-# ✅ Scenario 1: Clickhouse & Kafka Challenge
+# Scenario 1: Clickhouse & Kafka Challenge
 
 This checklist helps set up a ClickHouse instance that consumes CDC messages from Kafka via Debezium and stores them in final MergeTree tables.
 
 ---
+
+# Deliverables
+
+- ClickHouse Database and Table Schemas
+![alt text](image.png)
+
 
 # Task 1 - Checklist
 
