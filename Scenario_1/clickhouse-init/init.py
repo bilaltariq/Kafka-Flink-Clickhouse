@@ -50,8 +50,7 @@ for sql_file in sql_files:
                 print(f"❌ Failed on: {table}")
             print(f"   ↳ Reason: {e}")
 
-
-
+# ✅ Update expected tables
 expected_tables = [
     'demo_tables.products',
     'demo_tables.orders',
@@ -59,9 +58,9 @@ expected_tables = [
     'kafka_tables.products_kafka',
     'kafka_tables.orders_kafka',
     'kafka_tables.order_items_kafka',
-    'default.mv_products',
-    'default.mv_orders',
-    'default.mv_order_items'
+    'default.kafka_to_products',
+    'default.kafka_to_orders',
+    'default.kafka_to_order_items'
 ]
 
 print("\n📦 Verifying table existence...")
@@ -69,5 +68,6 @@ for tbl in expected_tables:
     try:
         client.query(f"DESCRIBE TABLE {tbl}")
         print(f"✅ Found: {tbl}")
-    except:
+    except Exception as e:
         print(f"❌ Missing: {tbl}")
+        print(f"   ↳ Reason: {e}")

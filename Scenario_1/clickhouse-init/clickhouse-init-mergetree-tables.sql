@@ -1,42 +1,52 @@
+-- Drop existing tables
 DROP TABLE IF EXISTS demo_tables.products;
 DROP TABLE IF EXISTS demo_tables.orders;
 DROP TABLE IF EXISTS demo_tables.order_items;
 
-CREATE TABLE demo_tables.products
-(
-    id UInt64,
+-- Create products table
+CREATE TABLE demo_tables.products (
+    id String,
     name String,
     description String,
-    price Float64,
-    cost_price Float64,
-    created_at DateTime,
-    updated_at DateTime
+    price String,
+    cost_price String,
+    created_at String,
+    updated_at String,
+    operation String,
+    _timestamp DateTime DEFAULT now(),
+    cdc_timestamp DateTime
 )
-ENGINE = MergeTree()
-ORDER BY id;
+ENGINE = MergeTree
+ORDER BY (id, cdc_timestamp);
 
-CREATE TABLE demo_tables.orders
-(
-    id UInt64,
+-- Create orders table
+CREATE TABLE demo_tables.orders (
+    id String,
     customer_name String,
     status String,
-    total_amount Float64,
-    created_at DateTime,
-    updated_at DateTime
+    total_amount String,
+    created_at String,
+    updated_at String,
+    operation String,
+    _timestamp DateTime DEFAULT now(),
+    cdc_timestamp DateTime
 )
-ENGINE = MergeTree()
-ORDER BY id;
+ENGINE = MergeTree
+ORDER BY (id, cdc_timestamp);
 
-CREATE TABLE demo_tables.order_items
-(
-    id UInt64,
-    order_id UInt64,
-    product_id UInt64,
-    quantity UInt32,
-    price Float64,
-    cost_price Float64,
-    created_at DateTime,
-    updated_at DateTime
+-- Create order_items table
+CREATE TABLE demo_tables.order_items (
+    id String,
+    order_id String,
+    product_id String,
+    quantity String,
+    price String,
+    cost_price String,
+    created_at String,
+    updated_at String,
+    operation String,
+    _timestamp DateTime DEFAULT now(),
+    cdc_timestamp DateTime
 )
-ENGINE = MergeTree()
-ORDER BY id;
+ENGINE = MergeTree
+ORDER BY (id, cdc_timestamp);
