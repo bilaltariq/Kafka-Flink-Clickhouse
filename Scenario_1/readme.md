@@ -8,7 +8,8 @@ This checklist helps set up a ClickHouse instance that consumes CDC messages fro
 
 - ClickHouse Database and Table Schemas
 
-![alt text](image.png)
+
+  ![alt text](image.png)
 
 
 # Task 1 - Checklist
