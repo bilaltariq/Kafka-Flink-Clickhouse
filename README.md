@@ -19,4 +19,4 @@ Data pipeline involving various DataSources; Kafka, ClickHouse, Airflow, and Apa
 
 # Notes
 1. Scenario 1 and 2 are complete. A readme.md within each scenario is available which has challenges, checklist and improvements.
-2. Scenario 3 is partially complete. I am able to setup Flink via docker, it is also communicating b/w Resource and Task manager, however I have develop the pipeline from Kafka->Flink->Clickhouse. [Limited time.]
+2. Scenario 3 is partially complete. I am able to setup Flink via docker, it is also communicating b/w Resource and Task manager, however I have develop the pipeline from Kafka->Flink->Clickhouse. [Time constraints.]
