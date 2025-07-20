@@ -1,5 +1,5 @@
-DROP DATABASE kafka_tables;
-DROP DATABASE demo_tables;
+DROP DATABASE IF EXISTS kafka_tables;
+DROP DATABASE IF EXISTS demo_tables;
 
 CREATE DATABASE IF NOT EXISTS kafka_tables;
 CREATE DATABASE IF NOT EXISTS demo_tables;

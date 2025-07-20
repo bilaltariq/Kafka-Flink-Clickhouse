@@ -2,8 +2,7 @@ import os
 import clickhouse_connect
 import re
 
-# Path to directory containing the SQL files
-sql_dir = os.path.dirname(__file__)  # Adjust if needed
+sql_dir = os.path.dirname(__file__)
 
 sql_files = [
     'clickhouse-init-db.sql',
@@ -12,20 +11,17 @@ sql_files = [
     'clickhouse-init-materialized-views.sql'
 ]
 
-# Connect to ClickHouse
 client = clickhouse_connect.get_client(
     host='localhost',
     port=8123,
     username='default',
-    password=''  # Add if needed
+    password=''  
 )
 
-# Regex to match CREATE/DROP TABLE or VIEW statements
 pattern = re.compile(
     r'(?i)(CREATE|DROP)\s+(TABLE|MATERIALIZED\s+VIEW)\s+(IF\s+(NOT\s+)?EXISTS\s+)?([^\s(]+)'
 )
 
-# Execute each SQL file
 for sql_file in sql_files:
     file_path = os.path.join(sql_dir, sql_file)
     print(f"\n📄 Executing {sql_file}...")
@@ -44,13 +40,12 @@ for sql_file in sql_files:
         try:
             client.command(stmt)
             if table:
-                print(f"✅ Created/Dropped: {table}")
+                print(f"Created/Dropped: {table}")
         except Exception as e:
             if table:
-                print(f"❌ Failed on: {table}")
+                print(f"Failed on: {table}")
             print(f"   ↳ Reason: {e}")
 
-# ✅ Update expected tables
 expected_tables = [
     'demo_tables.products',
     'demo_tables.orders',
@@ -63,11 +58,11 @@ expected_tables = [
     'default.kafka_to_order_items'
 ]
 
-print("\n📦 Verifying table existence...")
+print("\nVerifying table existence...")
 for tbl in expected_tables:
     try:
         client.query(f"DESCRIBE TABLE {tbl}")
-        print(f"✅ Found: {tbl}")
+        print(f"Found: {tbl}")
     except Exception as e:
-        print(f"❌ Missing: {tbl}")
+        print(f"Missing: {tbl}")
         print(f"   ↳ Reason: {e}")

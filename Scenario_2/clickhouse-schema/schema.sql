@@ -1,4 +1,4 @@
-DROP TABLE demo_tables.daily_sales_stats;
+DROP TABLE IF EXISTS demo_tables.daily_sales_stats;
 
 CREATE TABLE IF NOT EXISTS demo_tables.daily_sales_stats
 (
